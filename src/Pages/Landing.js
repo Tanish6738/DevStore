@@ -5,6 +5,8 @@ import Features from "@/components/Landing/Features";
 import Testimonials from "@/components/Landing/Testimonials";
 import Contact from "@/components/Landing/Contact";
 import Footer from "@/components/Landing/Footer";
+import FAQs from "@/components/Landing/FAQs";
+import FeaturedProducts from "@/components/Landing/FeaturedProducts";
 
 // Dynamic import for components that use Clerk hooks to avoid SSR issues
 const FloatingNavbar = dynamic(() => import("@/components/Landing/FloatingNavbar"), {
@@ -18,7 +20,9 @@ const Landing = () => {
       <FloatingNavbar />
       <HeroSection />
       <AboutSection />
+      <FeaturedProducts/>
       <Features />
+      <FAQs/>
       <Testimonials />
       <Contact /> 
       <Footer />

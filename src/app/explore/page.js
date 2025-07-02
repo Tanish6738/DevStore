@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useUser } from '@clerk/nextjs';
 import { useRouter, useSearchParams } from 'next/navigation';
+import Image from 'next/image';
 import { MagnifyingGlassIcon, TagIcon, FunnelIcon } from '@heroicons/react/24/outline';
 import Header from '@/components/Header';
 import Card from '@/components/ui/Card';
@@ -91,7 +92,7 @@ export default function Explore() {
   // Separate effect for initial load
   useEffect(() => {
     fetchProducts(false);
-  }, [selectedCategory, currentPage]); // Remove debouncedSearchQuery from here
+  }, [selectedCategory, currentPage, fetchProducts]); // Add fetchProducts dependency
 
   // Separate effect for search
   useEffect(() => {
@@ -151,7 +152,7 @@ export default function Explore() {
       }));
     };
     img.src = faviconUrl;
-  }, []); // Remove imageStatuses dependency to prevent recreation
+  }, [imageStatuses]); // Add imageStatuses dependency
 
   // Preload favicons when products are loaded
   useEffect(() => {
@@ -328,7 +329,7 @@ export default function Explore() {
                     >
                       <div className="flex items-start gap-4 mb-4">
                         {product.faviconUrl && imageStatuses[product.faviconUrl] === 'loaded' && (
-                          <img
+                          <Image
                             src={product.faviconUrl}
                             alt={`${product.title} favicon`}
                             width={48}
