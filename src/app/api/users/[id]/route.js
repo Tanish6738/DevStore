@@ -8,7 +8,7 @@ export async function GET(request, { params }) {
   try {
     await connectDB();
     
-    const { id } = params;
+    const { id } = await params;
     const user = await User.findById(id).select('-clerkId');
 
     if (!user) {
@@ -36,7 +36,7 @@ export async function GET(request, { params }) {
 export const PUT = withAuth(async (request, { params }) => {
   try {
     const currentUser = request.user;
-    const { id } = params;
+    const { id } = await params;
     
     // Users can only update their own profile
     if (currentUser._id.toString() !== id) {

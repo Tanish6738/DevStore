@@ -70,7 +70,7 @@ const HeroSection = () => {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-theme-secondary/80 backdrop-blur-sm border border-theme-primary/20 rounded-full text-sm text-theme-text-secondary">
               <Code className="w-4 h-4 text-theme-primary" />
-              Developer Tools Hub
+              Developer Products Hub
             </div>
           </motion.div>
 
@@ -94,7 +94,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl md:text-2xl text-theme-text-secondary mb-12 max-w-3xl mx-auto leading-relaxed"
           >
-            Discover, save, and star your favorite dev tools, APIs, and platforms — all in one elegant space. 
+            Discover, save, and star your favorite dev products, APIs, and platforms — all in one elegant space. 
             No more digging through bookmarks or messy docs.
           </motion.p>
 
@@ -148,7 +148,7 @@ const HeroSection = () => {
               </div>
               <div className="text-left">
                 <h3 className="font-semibold text-theme-text text-sm">Save & Organize</h3>
-                <p className="text-xs text-theme-text-secondary">Keep tools organized</p>
+                <p className="text-xs text-theme-text-secondary">Keep products organized</p>
               </div>
             </motion.div>
 
@@ -161,7 +161,7 @@ const HeroSection = () => {
               </div>
               <div className="text-left">
                 <h3 className="font-semibold text-theme-text text-sm">Star Favorites</h3>
-                <p className="text-xs text-theme-text-secondary">Quick access to top tools</p>
+                <p className="text-xs text-theme-text-secondary">Quick access to top products</p>
               </div>
             </motion.div>
 
@@ -174,7 +174,7 @@ const HeroSection = () => {
               </div>
               <div className="text-left">
                 <h3 className="font-semibold text-theme-text text-sm">Discover New</h3>
-                <p className="text-xs text-theme-text-secondary">Find amazing tools</p>
+                <p className="text-xs text-theme-text-secondary">Find amazing products</p>
               </div>
             </motion.div>
           </motion.div>

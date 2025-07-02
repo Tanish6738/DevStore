@@ -39,7 +39,7 @@ const AboutSection = () => {
             viewport={{ once: true }}
             className="text-xl text-theme-text-secondary leading-relaxed mb-16 max-w-3xl mx-auto"
           >
-            Whether you're a solo dev, part of a startup, or leading a team, having quick access to your most-used tools should be effortless.
+            Whether you&apos;re a solo dev, part of a startup, or leading a team, having quick access to your most-used products should be effortless.
             ToolSpace brings together your URLs, notes, and favorites into one clean dashboard — searchable, categorized, and ready to go.
           </motion.p>
           
@@ -85,7 +85,7 @@ const AboutSection = () => {
                 Organized Structure
               </h3>
               <p className="text-theme-text-secondary leading-relaxed">
-                Keep your tools categorized and organized with an intuitive structure that makes sense.
+                Keep your products categorized and organized with an intuitive structure that makes sense.
               </p>
             </motion.div>
             
@@ -107,7 +107,7 @@ const AboutSection = () => {
                 Lightning Fast
               </h3>
               <p className="text-theme-text-secondary leading-relaxed">
-                Search and access your tools instantly with our blazing-fast interface and smart categorization.
+                Search and access your products instantly with our blazing-fast interface and smart categorization.
               </p>
             </motion.div>
           </div>

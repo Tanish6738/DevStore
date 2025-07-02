@@ -9,7 +9,7 @@ const Features = () => {
     {
       icon: Link,
       title: "One-Click URL Save",
-      description: "Save a tool or API link with smart metadata preview — title, icon, and description fetched instantly.",
+      description: "Save a product or API link with smart metadata preview — title, icon, and description fetched instantly.",
       delay: 0.1
     },
     {
@@ -20,14 +20,14 @@ const Features = () => {
     },
     {
       icon: Globe,
-      title: "Curated Dev Tools",
+      title: "Curated Dev Products",
       description: "Access our built-in library of top dev platforms like GitHub, Vercel, Postman, etc.",
       delay: 0.3
     },
     {
       icon: Star,
       title: "Star & Tag",
-      description: "Keep track of frequently used tools, add notes, and use tags for fast filtering.",
+      description: "Keep track of frequently used products, add notes, and use tags for fast filtering.",
       delay: 0.4
     },
     {
@@ -71,7 +71,7 @@ const Features = () => {
               </span>
             </h2>
             <p className="text-xl text-theme-text-secondary max-w-3xl mx-auto leading-relaxed">
-              Powerful features designed to streamline your development workflow and keep your tools organized.
+              Powerful features designed to streamline your development workflow and keep your products organized.
             </p>
           </motion.div>
 

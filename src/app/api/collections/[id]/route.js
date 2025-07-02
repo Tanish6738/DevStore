@@ -1,14 +1,13 @@
 import { NextResponse } from 'next/server';
-import { withAuth } from '../../../../../lib/auth';
-import { Collection, CollectionItem } from '../../../../../lib/models';
 import connectDB from '../../../../../lib/connectDB';
-
+import { Collection, CollectionItem } from '../../../../../lib/models';
+import { withAuth } from '../../../../../lib/auth';
 // Get a specific collection
 export async function GET(request, { params }) {
   try {
     await connectDB();
 
-    const { id } = params;
+    const { id } = await params;
     const { searchParams } = new URL(request.url);
     const includeItems = searchParams.get('includeItems') === 'true';
 
@@ -51,7 +50,7 @@ export async function GET(request, { params }) {
 export const PUT = withAuth(async (request, { params }) => {
   try {
     const user = request.user;
-    const { id } = params;
+    const { id } = await params;
     const data = await request.json();
 
     const collection = await Collection.findById(id);
@@ -101,7 +100,7 @@ export const PUT = withAuth(async (request, { params }) => {
 export const DELETE = withAuth(async (request, { params }) => {
   try {
     const user = request.user;
-    const { id } = params;
+    const { id } = await params;
 
     const collection = await Collection.findById(id);
 

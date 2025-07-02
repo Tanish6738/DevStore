@@ -5,8 +5,7 @@ import { motion } from 'framer-motion'
 import { X, Palette, Eye, Download, Save } from 'lucide-react'
 import { useTheme } from './ThemeProvider'
 import Button from '../ui/Button'
-// import Button from '../ui/Button'
-// import Input from '../ui/Input'
+import Input from '../ui/Input'
 
 
 const CustomThemeCreator = ({ onClose }) => {

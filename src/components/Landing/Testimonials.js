@@ -1,64 +1,68 @@
+"use client";
 
-'use client'
-
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react'
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
 
 const Testimonials = () => {
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const testimonials = [
     {
       name: "Alex M.",
       role: "Frontend Engineer",
       company: "",
-      quote: "Finally replaced my chaotic bookmarks bar. ToolSpace is like my command center.",
+      quote:
+        "Finally replaced my chaotic bookmarks bar. ToolSpace is like my command center.",
       rating: 5,
       avatar: "🧑‍💻",
-      tech: ["React", "Node.js", "MongoDB"]
+      tech: ["React", "Node.js", "MongoDB"],
     },
     {
       name: "Priya K.",
       role: "DevOps Lead",
       company: "",
-      quote: "I shared my team's microservices tools with one link. Onboarding went from 2 hours to 10 minutes.",
+      quote:
+        "I shared my team's microservices products with one link. Onboarding went from 2 hours to 10 minutes.",
       rating: 5,
       avatar: "�‍�",
-      tech: ["Docker", "Kubernetes", "AWS"]
+      tech: ["Docker", "Kubernetes", "AWS"],
     },
     {
       name: "David T.",
       role: "Indie Hacker",
       company: "",
-      quote: "The built-in tool suggestions introduced me to new APIs I now can't live without.",
+      quote:
+        "The built-in product suggestions introduced me to new APIs I now can't live without.",
       rating: 5,
       avatar: "�‍💼",
-      tech: ["Next.js", "Supabase", "Vercel"]
-    }
-  ]
+      tech: ["Next.js", "Supabase", "Vercel"],
+    },
+  ];
 
   // Auto-scroll through testimonials
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-    }, 5000)
-    return () => clearInterval(interval)
-  }, [testimonials.length])
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [testimonials.length]);
 
   const nextTestimonial = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-  }
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  };
 
   const prevTestimonial = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
-  }
+    setCurrentIndex(
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length
+    );
+  };
 
   return (
     <section id="testimonials" className="py-24 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-theme-background via-theme-primary/5 to-theme-background"></div>
-      
+
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
@@ -70,13 +74,14 @@ const Testimonials = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-theme-text mb-6">
-              What Developers Are{' '}
+              What Developers Are{" "}
               <span className="bg-gradient-to-r from-theme-primary to-theme-accent bg-clip-text text-theme-text">
                 Saying
               </span>
             </h2>
             <p className="text-xl text-theme-text-secondary max-w-3xl mx-auto">
-              Join thousands of developers who've transformed their workflow
+              Join thousands of developers who&apos;ve transformed their
+              workflow
             </p>
           </motion.div>
 
@@ -93,7 +98,7 @@ const Testimonials = () => {
               >
                 {/* Quote icon */}
                 <Quote className="w-12 h-12 text-theme-primary/30 mb-6" />
-                
+
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                   {/* Testimonial Content */}
                   <div>
@@ -103,7 +108,7 @@ const Testimonials = () => {
                       transition={{ delay: 0.2 }}
                       className="text-xl md:text-2xl text-theme-text leading-relaxed mb-6 italic"
                     >
-                      "{testimonials[currentIndex].quote}"
+                      &quot;{testimonials[currentIndex].quote}&quot;
                     </motion.p>
 
                     {/* Rating */}
@@ -113,9 +118,14 @@ const Testimonials = () => {
                       transition={{ delay: 0.3 }}
                       className="flex items-center space-x-1 mb-6"
                     >
-                      {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                        <Star key={i} className="w-5 h-5 fill-theme-warning text-theme-warning" />
-                      ))}
+                      {[...Array(testimonials[currentIndex].rating)].map(
+                        (_, i) => (
+                          <Star
+                            key={i}
+                            className="w-5 h-5 fill-theme-warning text-theme-warning"
+                          />
+                        )
+                      )}
                     </motion.div>
 
                     {/* Author info */}
@@ -147,14 +157,16 @@ const Testimonials = () => {
                     className="lg:justify-self-end"
                   >
                     <div className="bg-theme-background/50 rounded-2xl p-6 border border-theme-border/20">
-                      <h5 className="text-lg font-semibold text-theme-text mb-4">Tech Stack</h5>
+                      <h5 className="text-lg font-semibold text-theme-text mb-4">
+                        Tech Stack
+                      </h5>
                       <div className="flex flex-wrap gap-3">
                         {testimonials[currentIndex].tech.map((tech, i) => (
                           <motion.span
                             key={tech}
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.6 + (i * 0.1) }}
+                            transition={{ delay: 0.6 + i * 0.1 }}
                             className="px-3 py-2 bg-theme-primary/10 text-theme-primary rounded-lg text-sm font-medium border border-theme-primary/20"
                           >
                             {tech}
@@ -174,7 +186,7 @@ const Testimonials = () => {
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
-            
+
             <button
               onClick={nextTestimonial}
               className="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-theme-secondary/80 backdrop-blur-sm border border-theme-border/30 rounded-full flex items-center justify-center text-theme-text hover:text-theme-primary hover:bg-theme-primary/10 transition-all duration-300"
@@ -190,9 +202,9 @@ const Testimonials = () => {
                 key={index}
                 onClick={() => setCurrentIndex(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentIndex 
-                    ? 'bg-theme-primary scale-125' 
-                    : 'bg-theme-text-secondary/30 hover:bg-theme-text-secondary/60'
+                  index === currentIndex
+                    ? "bg-theme-primary scale-125"
+                    : "bg-theme-text-secondary/30 hover:bg-theme-text-secondary/60"
                 }`}
               />
             ))}
@@ -208,20 +220,24 @@ const Testimonials = () => {
           >
             {[
               { number: "10K+", label: "Active Developers" },
-              { number: "50K+", label: "Tools Organized" },
-              { number: "99%", label: "Satisfaction Rate" }
+              { number: "50K+", label: "Products Organized" },
+              { number: "99%", label: "Satisfaction Rate" },
             ].map((stat, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.5 + (index * 0.1) }}
+                transition={{ delay: 0.5 + index * 0.1 }}
                 className="text-center p-6 bg-theme-secondary/30 backdrop-blur-sm rounded-xl border border-theme-border/20"
               >
                 <motion.div
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
-                  transition={{ delay: 0.7 + (index * 0.1), type: "spring", stiffness: 200 }}
+                  transition={{
+                    delay: 0.7 + index * 0.1,
+                    type: "spring",
+                    stiffness: 200,
+                  }}
                   className="text-3xl md:text-4xl font-bold text-theme-primary mb-2"
                 >
                   {stat.number}
@@ -235,7 +251,7 @@ const Testimonials = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Testimonials
+export default Testimonials;

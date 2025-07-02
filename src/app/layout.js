@@ -102,6 +102,8 @@ export default function RootLayout({ children }) {
           headerSubtitle: "text-theme-text-secondary",
         },
       }}
+      signInFallbackRedirectUrl="/dashboard"
+      signUpFallbackRedirectUrl="/dashboard"
     >
       <html lang="en" className="h-full">
         <head>

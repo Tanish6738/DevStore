@@ -8,7 +8,7 @@ export async function GET(request, { params }) {
   try {
     await connectDB();
 
-    const { id } = params;
+    const { id } = await params;
     const { searchParams } = new URL(request.url);
     const page = parseInt(searchParams.get('page')) || 1;
     const limit = parseInt(searchParams.get('limit')) || 20;
@@ -55,7 +55,7 @@ export async function GET(request, { params }) {
 export const POST = withAuth(async (request, { params }) => {
   try {
     const user = request.user;
-    const { id } = params;
+    const { id } = await params;
     const data = await request.json();
 
     const { productId, notes, order } = data;
@@ -139,7 +139,7 @@ export const POST = withAuth(async (request, { params }) => {
 export const PUT = withAuth(async (request, { params }) => {
   try {
     const user = request.user;
-    const { id } = params;
+    const { id } = await params;
     const data = await request.json();
 
     const { itemId, notes, order } = data;
@@ -198,7 +198,7 @@ export const PUT = withAuth(async (request, { params }) => {
 export const DELETE = withAuth(async (request, { params }) => {
   try {
     const user = request.user;
-    const { id } = params;
+    const { id } = await params;
     const { searchParams } = new URL(request.url);
     const itemId = searchParams.get('itemId');
 

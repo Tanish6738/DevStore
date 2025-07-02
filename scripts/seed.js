@@ -374,6 +374,21 @@ async function seedDatabase() {
         const product = await Product.create({
           ...productData,
           isPredefined: true,
+          isPublic: true, // Predefined products should be public
+          // Add community data for consistency
+          communityData: {
+            isApproved: true,
+            approvedAt: new Date(),
+            isHidden: false,
+            reportCount: 0
+          },
+          // Add public analytics for consistency
+          publicAnalytics: {
+            viewCount: 0,
+            clickCount: 0,
+            addedToCollectionsCount: 0,
+            uniqueUsers: 0
+          }
         });
         createdProductsCount++;
 

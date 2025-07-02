@@ -95,13 +95,13 @@ const Contact = () => {
             </motion.div>
             
             <h2 className="text-4xl md:text-5xl font-bold text-theme-text mb-6">
-              Let's{' '}
+              Let&apos;s{' '}
               <span className="bg-gradient-to-r from-theme-primary to-theme-accent bg-clip-text text-theme-text">
                 Connect
               </span>
             </h2>
             <p className="text-xl text-theme-text-secondary max-w-3xl mx-auto leading-relaxed">
-              Have feedback, ideas, or want to partner? We'd love to hear from you.
+              Have feedback, ideas, or want to partner? We&apos;d love to hear from you.
             </p>
           </motion.div>
 
@@ -228,7 +228,7 @@ const Contact = () => {
                     Message sent! 🎉
                   </h3>
                   <p className="text-theme-text-secondary">
-                    Thanks for reaching out. We'll get back to you soon!
+                    Thanks for reaching out. We&apos;ll get back to you soon!
                   </p>
                 </motion.div>
               )}
@@ -249,7 +249,7 @@ const Contact = () => {
                 Get In Touch
               </h3>
               <p className="text-theme-text-secondary mb-6">
-                We're here to help and answer any questions you might have
+                We&apos;re here to help and answer any questions you might have
               </p>
               
               <div className="space-y-3">

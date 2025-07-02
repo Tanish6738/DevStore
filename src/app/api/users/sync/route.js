@@ -57,7 +57,39 @@ export async function POST(request) {
       },
     });
 
-    await user.save();
+    try {
+      await user.save();
+    } catch (saveError) {
+      // Handle duplicate key error for email
+      if (saveError.code === 11000) {
+        if (saveError.keyPattern?.email) {
+          // Try to find and update the existing user with the same email
+          const existingUserByEmail = await User.findOne({ 
+            email: clerkUser.emailAddresses[0]?.emailAddress 
+          });
+          
+          if (existingUserByEmail && !existingUserByEmail.clerkId) {
+            // Update existing user with clerkId
+            existingUserByEmail.clerkId = userId;
+            existingUserByEmail.displayName = `${clerkUser.firstName || ''} ${clerkUser.lastName || ''}`.trim() || 'User';
+            existingUserByEmail.avatarUrl = clerkUser.imageUrl || '';
+            await existingUserByEmail.save();
+            
+            return NextResponse.json({ 
+              message: 'User updated successfully',
+              user: existingUserByEmail 
+            });
+          }
+        }
+        
+        // If we can't resolve the conflict, return error
+        return NextResponse.json(
+          { error: 'User with this email already exists' },
+          { status: 409 }
+        );
+      }
+      throw saveError; // Re-throw if not a duplicate key error
+    }
 
     return NextResponse.json({ 
       message: 'User created successfully',

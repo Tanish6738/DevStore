@@ -8,7 +8,7 @@ export async function GET(request, { params }) {
   try {
     await connectDB();
 
-    const { id } = params;
+    const { id } = await params;
     const tag = await Tag.findById(id);
 
     if (!tag) {
@@ -37,7 +37,7 @@ export async function GET(request, { params }) {
 // Update a tag
 export const PUT = withAuth(async (request, { params }) => {
   try {
-    const { id } = params;
+    const { id } = await params;
     const data = await request.json();
 
     const tag = await Tag.findById(id);
@@ -88,7 +88,7 @@ export const PUT = withAuth(async (request, { params }) => {
 // Delete a tag
 export const DELETE = withAuth(async (request, { params }) => {
   try {
-    const { id } = params;
+    const { id } = await params;
 
     const tag = await Tag.findById(id);
 
