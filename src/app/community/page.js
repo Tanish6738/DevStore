@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import Image from 'next/image';
+import NextImage from 'next/image';
 import Header from '@/components/Header';
 import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
@@ -350,7 +350,7 @@ export default function CommunityPage() {
                         <div className="flex items-start justify-between mb-3">
                           <div className="flex items-center space-x-3 flex-1 min-w-0">
                             {imageStatuses[item.faviconUrl] === 'loaded' && (
-                              <Image
+                              <NextImage
                                 src={item.faviconUrl}
                                 alt={`${item.title} favicon`}
                                 width={24}
