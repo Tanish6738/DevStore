@@ -143,7 +143,7 @@ const FeaturedProducts = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-theme-accent/10 rounded-full mb-6">
             <Star className="w-4 h-4 text-theme-accent" />
             <span className="text-sm font-medium text-theme-accent">
-              From the Makers of CodeHunt
+              From the Makers of DevStore
             </span>
           </div>
 

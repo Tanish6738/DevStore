@@ -43,6 +43,48 @@ console.log('ProductTag model:', ProductTag?.modelName);
 console.log('Starting database seeding...');
 
 const predefinedProducts = [
+  // Featured Products from Landing Page
+  {
+    title: 'CodeArc',
+    url: 'https://snippets-frontend-pearl.vercel.app/',
+    description: 'CodeArc helps developers organize, reuse, and share code snippets effortlessly. Powered by AI, it streamlines development by providing smart suggestions, automated tests, and real-time collaboration tools.',
+    category: 'Development Tools',
+    faviconUrl: 'https://snippets-frontend-pearl.vercel.app/favicon.ico',
+    metadata: {
+      tags: ['ai', 'snippets', 'code-management', 'collaboration', 'search'],
+    },
+  },
+  {
+    title: 'Securo',
+    url: 'https://securo-app-v0.vercel.app/',
+    description: 'Securo lets users scan for data breaches involving their email or passwords, monitor threat exposure, and gain AI-driven security recommendations. Ideal for proactive digital safety.',
+    category: 'Security',
+    faviconUrl: 'https://securo-app-v0.vercel.app/favicon.ico',
+    metadata: {
+      tags: ['security', 'breach-detection', 'ai', 'password-analysis', 'monitoring'],
+    },
+  },
+  {
+    title: 'PDF Pro',
+    url: 'https://pdf-merger-green.vercel.app/',
+    description: 'PDF Pro offers a powerful suite to create, merge, protect, and manage PDFs. Designed with security-first tools like encryption, watermarking, and file tracking for secure document workflows.',
+    category: 'Document Management',
+    faviconUrl: 'https://pdf-merger-green.vercel.app/favicon.ico',
+    metadata: {
+      tags: ['pdf', 'document-management', 'encryption', 'security', 'file-processing'],
+    },
+  },
+  {
+    title: 'Kai-API',
+    url: 'https://kai-api-v0.onrender.com/',
+    description: 'Kai-API scans public repositories to detect leaked or vulnerable APIs. It provides continuous monitoring, instant alerts, and detailed security insights to prevent breaches before they happen.',
+    category: 'Security',
+    faviconUrl: 'https://kai-api-v0.onrender.com/favicon.ico',
+    metadata: {
+      tags: ['api-security', 'vulnerability-scanning', 'monitoring', 'repository-security', 'alerts'],
+    },
+  },
+
   // Development Tools
   {
     title: 'GitHub',
@@ -263,6 +305,25 @@ const predefinedProducts = [
 ];
 
 const predefinedTags = [
+  // Featured Product Tags
+  { name: 'ai', color: '#FF6B35', category: 'technology' },
+  { name: 'snippets', color: '#007ACC', category: 'development' },
+  { name: 'code-management', color: '#28A745', category: 'development' },
+  { name: 'search', color: '#17A2B8', category: 'features' },
+  { name: 'security', color: '#DC3545', category: 'security' },
+  { name: 'breach-detection', color: '#DC3545', category: 'security' },
+  { name: 'password-analysis', color: '#FFC107', category: 'security' },
+  { name: 'monitoring', color: '#6C757D', category: 'operations' },
+  { name: 'pdf', color: '#E74C3C', category: 'documents' },
+  { name: 'document-management', color: '#9B59B6', category: 'productivity' },
+  { name: 'encryption', color: '#2C3E50', category: 'security' },
+  { name: 'file-processing', color: '#F39C12', category: 'productivity' },
+  { name: 'api-security', color: '#E74C3C', category: 'security' },
+  { name: 'vulnerability-scanning', color: '#C0392B', category: 'security' },
+  { name: 'repository-security', color: '#8E44AD', category: 'security' },
+  { name: 'alerts', color: '#F1C40F', category: 'notifications' },
+
+  // Existing Tags
   { name: 'git', color: '#F05032', category: 'version-control' },
   { name: 'version-control', color: '#F05032', category: 'development' },
   { name: 'collaboration', color: '#4A90E2', category: 'workflow' },

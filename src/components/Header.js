@@ -54,7 +54,7 @@ const Header = ({ title, showBack = false }) => {
                 <span className="text-theme-primary font-bold text-sm">CH</span>
               </div>
               <h1 className="text-xl font-semibold text-theme-text">
-                {title || 'CodeHunt'}
+                {title || 'DevStore'}
               </h1>
             </div>
           </div>

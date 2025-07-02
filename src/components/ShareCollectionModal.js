@@ -38,7 +38,7 @@ export default function ShareCollectionModal({
   };
 
   const handleShareToSocial = (platform) => {
-    const text = `Check out my "${collection?.name}" collection on CodeHunt`;
+    const text = `Check out my "${collection?.name}" collection on DevStore`;
     const url = shareUrl;
     
     let shareUrl2;

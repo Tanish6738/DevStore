@@ -60,7 +60,7 @@ const Footer = () => {
                 <div className="w-10 h-10 bg-gradient-to-br from-theme-primary to-theme-accent rounded-xl flex items-center justify-center">
                   <BookOpen className="w-6 h-6 text-white" />
                 </div>
-                <span className="text-2xl font-bold text-theme-text">DevToolkit</span>
+                <span className="text-2xl font-bold text-theme-text">DevStore</span>
               </motion.div>
               
               <p className="text-theme-text-secondary leading-relaxed mb-6">
@@ -188,7 +188,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* Copyright */}
             <div className="flex items-center space-x-2 text-theme-text-secondary">
-              <span>© {currentYear} DevToolkit. Made with</span>
+              <span>© {currentYear} DevStore. Made with</span>
               <motion.div
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}

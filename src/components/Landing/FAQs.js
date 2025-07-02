@@ -37,12 +37,12 @@ const FAQs = () => {
   const faqData = [
     {
       category: "general",
-      question: "What is CodeHunt and how does it work?",
-      answer: "CodeHunt is a developer-focused platform that helps you organize, discover, and manage development tools, APIs, and resources. Simply save URLs with one-click, create custom collections, and collaborate with your team to build a comprehensive toolkit for your projects."
+      question: "What is DevStore and how does it work?",
+      answer: "DevStore is a developer-focused platform that helps you organize, discover, and manage development tools, APIs, and resources. Simply save URLs with one-click, create custom collections, and collaborate with your team to build a comprehensive toolkit for your projects."
     },
     {
       category: "general",
-      question: "Do I need to create an account to use CodeHunt?",
+      question: "Do I need to create an account to use DevStore?",
       answer: "While you can browse our curated collection of dev tools without an account, creating one unlocks the full potential: personal collections, saved favorites, collaboration features, and sync across all your devices."
     },
     {
@@ -72,7 +72,7 @@ const FAQs = () => {
     },
     {
       category: "pricing",
-      question: "Is CodeHunt free to use?",
+      question: "Is DevStore free to use?",
       answer: "We offer a generous free tier that includes personal collections, basic collaboration, and access to our curated tool library. Premium plans provide advanced features like unlimited collections, advanced analytics, and priority support."
     },
     {
@@ -154,7 +154,7 @@ const FAQs = () => {
             </span>
           </h2>
           <p className="text-lg text-theme-textSecondary max-w-2xl mx-auto">
-            Everything you need to know about CodeHunt. Can&apos;t find what you&apos;re looking for? 
+            Everything you need to know about DevStore. Can&apos;t find what you&apos;re looking for? 
             <span className="text-theme-accent"> We&apos;re here to help!</span>
           </p>
         </motion.div>

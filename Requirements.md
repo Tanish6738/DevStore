@@ -1,8 +1,8 @@
-# DevToolkit - Developer Tool Organizer
+# DevStore - Developer Tool Organizer
 
 ## Project Overview
 
-DevToolkit is a developer-friendly web application that allows users to bookmark, organize, and share their favorite development tools, APIs, SaaS products, and resources. Think of it as a "Pocket" or "Raindrop.io" specifically designed for developers.
+DevStore is a developer-friendly web application that allows users to bookmark, organize, and share their favorite development tools, APIs, SaaS products, and resources. Think of it as a "Pocket" or "Raindrop.io" specifically designed for developers.
 
 ## Current Implementation Status
 

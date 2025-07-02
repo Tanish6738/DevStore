@@ -8,12 +8,11 @@ export async function GET(request) {
     await connectDB();
 
     const { searchParams } = new URL(request.url);
-    const limit = parseInt(searchParams.get('limit')) || 50;
+    const limit = parseInt(searchParams.get('limit')) || 12;
     const page = parseInt(searchParams.get('page')) || 1;
     const category = searchParams.get('category');
     const search = searchParams.get('search');
-    const sortBy = searchParams.get('sortBy') || 'createdAt';
-    const sortOrder = searchParams.get('sortOrder') || 'desc';
+    const sort = searchParams.get('sort') || 'newest';
 
     // Build query
     const query = { isPublic: true };
@@ -28,24 +27,24 @@ export async function GET(request) {
 
     // Add search filter if specified
     if (search) {
-      query.$text = { $search: search };
+      query.$or = [
+        { name: { $regex: search, $options: 'i' } },
+        { description: { $regex: search, $options: 'i' } }
+      ];
     }
 
     // Build sort object
-    const sortObj = {};
-    switch (sortBy) {
-      case 'name':
-        sortObj.name = sortOrder === 'desc' ? -1 : 1;
+    let sortObj = {};
+    switch (sort) {
+      case 'popular':
+        sortObj = { 'analytics.viewCount': -1, createdAt: -1 };
         break;
-      case 'updatedAt':
-        sortObj.updatedAt = sortOrder === 'desc' ? -1 : 1;
+      case 'rating':
+        sortObj = { averageRating: -1, createdAt: -1 };
         break;
-      case 'viewCount':
-        sortObj['analytics.viewCount'] = sortOrder === 'desc' ? -1 : 1;
-        break;
-      case 'createdAt':
+      case 'newest':
       default:
-        sortObj.createdAt = sortOrder === 'desc' ? -1 : 1;
+        sortObj = { createdAt: -1 };
         break;
     }
 
@@ -66,24 +65,31 @@ export async function GET(request) {
 
         return {
           ...collection,
-          owner: collection.userId,
-          itemCount,
+          title: collection.name, // Map name to title for consistency
+          createdBy: collection.userId,
+          products: itemCount, // For the UI display
+          viewCount: collection.analytics?.viewCount || 0,
         };
       })
     );
 
     // Get total count for pagination
     const totalCount = await Collection.countDocuments(query);
+    
+    // Get unique categories for filtering
+    const allCollections = await Collection.find({ isPublic: true }, { category: 1, 'templateData.templateCategory': 1 });
+    const categories = [...new Set(allCollections.flatMap(c => [c.category, c.templateData?.templateCategory]).filter(Boolean))];
 
     return NextResponse.json({
       collections: collectionsWithCounts,
+      categories,
       pagination: {
         page,
         limit,
-        totalCount,
-        totalPages: Math.ceil(totalCount / limit),
-        hasNextPage: page < Math.ceil(totalCount / limit),
-        hasPrevPage: page > 1
+        total: totalCount,
+        pages: Math.ceil(totalCount / limit),
+        hasNext: page < Math.ceil(totalCount / limit),
+        hasPrev: page > 1
       }
     });
   } catch (error) {

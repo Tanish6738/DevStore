@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "DevToolkit - Your Developer Toolkit, Organized",
+  title: "DevStore - Your Developer Toolkit, Organized",
   description:
     "Bookmark. Curate. Share. Discover. All your favorite development tools in one personal space. The perfect developer command center for organizing APIs, design systems, SaaS tools, and frameworks.",
   keywords: [
@@ -29,9 +29,9 @@ export const metadata = {
     "tool curation",
     "developer productivity",
   ],
-  authors: [{ name: "DevToolkit Team" }],
-  creator: "DevToolkit",
-  publisher: "DevToolkit",
+  authors: [{ name: "DevStore Team" }],
+  creator: "DevStore",
+  publisher: "DevStore",
   formatDetection: {
     email: false,
     address: false,
@@ -40,20 +40,20 @@ export const metadata = {
   metadataBase: new URL("https://devtoolkit.com"),
   alternates: {
     canonical: "/",
-    title: "DevToolkit",
+    title: "DevStore",
   },
   openGraph: {
-    title: "DevToolkit - Your Developer Toolkit, Organized",
+    title: "DevStore - Your Developer Toolkit, Organized",
     description:
       "Bookmark. Curate. Share. Discover. All your favorite development tools in one personal space.",
     url: "https://devtoolkit.com",
-    siteName: "DevToolkit",
+    siteName: "DevStore",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "DevToolkit - Developer Tools Organizer",
+        alt: "DevStore - Developer Tools Organizer",
       },
     ],
     locale: "en_US",
@@ -61,7 +61,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "DevToolkit - Your Developer Toolkit, Organized",
+    title: "DevStore - Your Developer Toolkit, Organized",
     description:
       "Bookmark. Curate. Share. Discover. All your favorite development tools in one personal space.",
     images: ["/twitter-image.png"],

@@ -1,10 +1,10 @@
-# CodeHunt - Features & Functionalities
+# DevStore - Features & Functionalities
 
 *Last Updated: July 1, 2025*
 
 ## 🚀 **Application Overview**
 
-CodeHunt (DevToolkit) is a comprehensive developer-friendly web application that allows users to bookmark, organize, and share their favorite development tools, APIs, SaaS products, and resources. Built with Next.js 15, MongoDB, and Clerk authentication, it serves as a "Pocket" or "Raindrop.io" specifically designed for developers.
+DevStore (DevStore) is a comprehensive developer-friendly web application that allows users to bookmark, organize, and share their favorite development tools, APIs, SaaS products, and resources. Built with Next.js 15, MongoDB, and Clerk authentication, it serves as a "Pocket" or "Raindrop.io" specifically designed for developers.
 
 ---
 
@@ -422,4 +422,4 @@ The application follows a modern, scalable architecture:
 
 ---
 
-*This documentation provides a comprehensive overview of all features and functionalities implemented in the CodeHunt application as of July 1, 2025.*
+*This documentation provides a comprehensive overview of all features and functionalities implemented in the DevStore application as of July 1, 2025.*

@@ -98,7 +98,7 @@ const FloatingNavbar = () => {
           <div className="w-8 h-8 bg-gradient-to-br from-theme-primary to-theme-accent rounded-lg flex items-center justify-center">
             <BookOpenIcon className="w-5 h-5 text-white" />
           </div>
-          <span className="text-xl font-bold text-theme-text">CodeHunt</span>
+          <span className="text-xl font-bold text-theme-text">DevStore</span>
         </motion.div>
 
         {/* Desktop Navigation */}

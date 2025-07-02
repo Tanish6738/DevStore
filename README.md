@@ -1,4 +1,4 @@
-# DevToolkit - Developer Tool Organizer
+# DevStore - Developer Tool Organizer
 
 A developer-friendly web application that allows users to bookmark, organize, and share their favorite development tools, APIs, SaaS products, and resources. Built with Next.js 15, MongoDB, and Clerk authentication.
 
