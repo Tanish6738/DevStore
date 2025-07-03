@@ -149,7 +149,7 @@ const FeaturedProducts = () => {
 
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-theme-text">
             Our Developer{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-theme-accent to-blue-400">
+            <span className="text-transparent bg-clip-text bg-white">
               Ecosystem
             </span>
           </h2>

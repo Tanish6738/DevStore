@@ -96,7 +96,7 @@ const Contact = () => {
             
             <h2 className="text-4xl md:text-5xl font-bold text-theme-text mb-6">
               Let&apos;s{' '}
-              <span className="bg-gradient-to-r from-theme-primary to-theme-accent bg-clip-text text-theme-text">
+              <span className="bg-white bg-clip-text text-theme-text">
                 Connect
               </span>
             </h2>
