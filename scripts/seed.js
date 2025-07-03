@@ -3,7 +3,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { existsSync } from 'fs';
 import connectDB from '../lib/connectDB.js';
-import { Product, Tag, ProductTag } from '../lib/models.js';
+import { Product, Tag, ProductTag, BlogCategory } from '../lib/models.js';
 
 // Load environment variables
 const __filename = fileURLToPath(import.meta.url);
@@ -390,6 +390,169 @@ const predefinedTags = [
   { name: 'dependencies', color: '#CB3837', category: 'package-manager' },
 ];
 
+const predefinedBlogCategories = [
+  {
+    name: 'Technology',
+    slug: 'technology',
+    description: 'Latest trends, tools, and insights in technology and software development',
+    color: '#3B82F6',
+    icon: '💻',
+    isActive: true,
+    order: 1,
+    postCount: 0
+  },
+  {
+    name: 'Web Development',
+    slug: 'web-development',
+    description: 'Frontend, backend, and full-stack web development tutorials and tips',
+    color: '#10B981',
+    icon: '🌐',
+    isActive: true,
+    order: 2,
+    postCount: 0
+  },
+  {
+    name: 'JavaScript',
+    slug: 'javascript',
+    description: 'JavaScript frameworks, libraries, and best practices',
+    color: '#F59E0B',
+    icon: '⚡',
+    isActive: true,
+    order: 3,
+    postCount: 0
+  },
+  {
+    name: 'React',
+    slug: 'react',
+    description: 'React.js tutorials, hooks, patterns, and ecosystem',
+    color: '#06B6D4',
+    icon: '⚛️',
+    isActive: true,
+    order: 4,
+    postCount: 0
+  },
+  {
+    name: 'Node.js',
+    slug: 'nodejs',
+    description: 'Server-side JavaScript with Node.js and related technologies',
+    color: '#22C55E',
+    icon: '🚀',
+    isActive: true,
+    order: 5,
+    postCount: 0
+  },
+  {
+    name: 'DevOps',
+    slug: 'devops',
+    description: 'Deployment, CI/CD, containerization, and infrastructure automation',
+    color: '#8B5CF6',
+    icon: '🔧',
+    isActive: true,
+    order: 6,
+    postCount: 0
+  },
+  {
+    name: 'Database',
+    slug: 'database',
+    description: 'Database design, optimization, and management techniques',
+    color: '#F97316',
+    icon: '🗄️',
+    isActive: true,
+    order: 7,
+    postCount: 0
+  },
+  {
+    name: 'AI & Machine Learning',
+    slug: 'ai-ml',
+    description: 'Artificial intelligence, machine learning, and data science',
+    color: '#EC4899',
+    icon: '🤖',
+    isActive: true,
+    order: 8,
+    postCount: 0
+  },
+  {
+    name: 'Mobile Development',
+    slug: 'mobile-development',
+    description: 'iOS, Android, and cross-platform mobile app development',
+    color: '#6366F1',
+    icon: '📱',
+    isActive: true,
+    order: 9,
+    postCount: 0
+  },
+  {
+    name: 'Security',
+    slug: 'security',
+    description: 'Cybersecurity, web security, and best practices for secure coding',
+    color: '#EF4444',
+    icon: '🔒',
+    isActive: true,
+    order: 10,
+    postCount: 0
+  },
+  {
+    name: 'UI/UX Design',
+    slug: 'ui-ux-design',
+    description: 'User interface and user experience design principles and tools',
+    color: '#A855F7',
+    icon: '🎨',
+    isActive: true,
+    order: 11,
+    postCount: 0
+  },
+  {
+    name: 'Career & Growth',
+    slug: 'career-growth',
+    description: 'Professional development, career advice, and skill building',
+    color: '#14B8A6',
+    icon: '📈',
+    isActive: true,
+    order: 12,
+    postCount: 0
+  },
+  {
+    name: 'Tutorials',
+    slug: 'tutorials',
+    description: 'Step-by-step guides and how-to articles',
+    color: '#F59E0B',
+    icon: '📚',
+    isActive: true,
+    order: 13,
+    postCount: 0
+  },
+  {
+    name: 'News & Updates',
+    slug: 'news-updates',
+    description: 'Latest news, updates, and announcements in tech',
+    color: '#06B6D4',
+    icon: '📰',
+    isActive: true,
+    order: 14,
+    postCount: 0
+  },
+  {
+    name: 'Open Source',
+    slug: 'open-source',
+    description: 'Open source projects, contributions, and community insights',
+    color: '#22C55E',
+    icon: '🌟',
+    isActive: true,
+    order: 15,
+    postCount: 0
+  },
+  {
+    name: 'General',
+    slug: 'general',
+    description: 'General discussions and miscellaneous topics',
+    color: '#6B7280',
+    icon: '💬',
+    isActive: true,
+    order: 16,
+    postCount: 0
+  }
+];
+
 async function seedDatabase() {
   try {
     console.log('Connecting to database...');
@@ -427,6 +590,24 @@ async function seedDatabase() {
       }
     }
     console.log(`Total tags created: ${createdTagsCount}`);
+
+    console.log('Creating blog categories...');
+    let createdCategoriesCount = 0;
+    for (const categoryData of predefinedBlogCategories) {
+      try {
+        const existingCategory = await BlogCategory.findOne({ slug: categoryData.slug });
+        if (!existingCategory) {
+          const newCategory = await BlogCategory.create(categoryData);
+          createdCategoriesCount++;
+          console.log(`Created blog category: ${categoryData.name}`);
+        } else {
+          console.log(`Blog category already exists: ${categoryData.name}`);
+        }
+      } catch (categoryError) {
+        console.error(`Error creating blog category ${categoryData.name}:`, categoryError.message);
+      }
+    }
+    console.log(`Total blog categories created: ${createdCategoriesCount}`);
 
     console.log('Creating predefined products...');
     let createdProductsCount = 0;
@@ -491,7 +672,7 @@ async function seedDatabase() {
     }
 
     console.log('Seeding completed successfully!');
-    console.log(`Created ${createdProductsCount} products and ${createdTagsCount} tags`);
+    console.log(`Created ${createdProductsCount} products, ${createdTagsCount} tags, and ${createdCategoriesCount} blog categories`);
   } catch (error) {
     console.error('Error seeding database:', error);
     console.error('Stack trace:', error.stack);
