@@ -43,6 +43,10 @@ export default function CollectionsPage() {
   const [selectedFeaturedType, setSelectedFeaturedType] = useState('trending');
   const [successMessage, setSuccessMessage] = useState({ show: false, title: '', message: '' });
   const [showTemplateModal, setShowTemplateModal] = useState(false);
+  const [activeTab, setActiveTab] = useState('public'); // 'public' | 'mine'
+  const [myCollections, setMyCollections] = useState([]);
+  const [myLoading, setMyLoading] = useState(false);
+  const [myFetched, setMyFetched] = useState(false);
 
   // Debounced search
   const debouncedSearchQuery = useDebounce(searchQuery, 300);
@@ -100,6 +104,23 @@ export default function CollectionsPage() {
     }
   }, [selectedFeaturedType]);
 
+  const fetchMyCollections = useCallback(async () => {
+    if (!user) return; // Guard
+    setMyLoading(true);
+    try {
+      const response = await fetch('/api/collections');
+      const data = await response.json();
+      if (response.ok) {
+        setMyCollections(data.collections || []);
+        setMyFetched(true);
+      }
+    } catch (error) {
+      console.error('Error fetching my collections:', error);
+    } finally {
+      setMyLoading(false);
+    }
+  }, [user]);
+
   useEffect(() => {
     fetchCollections();
     fetchFeaturedCollections();
@@ -108,6 +129,13 @@ export default function CollectionsPage() {
   useEffect(() => {
     fetchFeaturedCollections();
   }, [selectedFeaturedType, fetchFeaturedCollections]);
+
+  // Fetch user's collections when switching to My Collections tab (lazy load)
+  useEffect(() => {
+    if (activeTab === 'mine' && user && !myFetched) {
+      fetchMyCollections();
+    }
+  }, [activeTab, user, myFetched, fetchMyCollections]);
 
   const handleForkCollection = async (collectionId) => {
     if (!user) {
@@ -171,9 +199,18 @@ export default function CollectionsPage() {
     });
   };
 
+  const handleTabChange = (tab) => {
+    if (tab === 'mine' && !user) {
+      router.push('/sign-in');
+      return;
+    }
+    setActiveTab(tab);
+  };
+
   // Filter and sort collections
   const filteredAndSortedCollections = useMemo(() => {
-    let filtered = collections.filter(collection => {
+    const sourceCollections = activeTab === 'public' ? collections : myCollections;
+    let filtered = sourceCollections.filter(collection => {
       // Search filter
       const matchesSearch = !debouncedSearchQuery || 
         collection.name.toLowerCase().includes(debouncedSearchQuery.toLowerCase()) ||
@@ -224,7 +261,7 @@ export default function CollectionsPage() {
     });
 
     return filtered;
-  }, [collections, debouncedSearchQuery, filterCategory, sortBy, sortOrder]);
+  }, [activeTab, collections, myCollections, debouncedSearchQuery, filterCategory, sortBy, sortOrder]);
 
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString();
@@ -241,27 +278,7 @@ export default function CollectionsPage() {
     return formatDate(dateString);
   };
 
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-theme-background">
-        <div className="max-w-7xl mx-auto px-4 py-8">
-          <div className="animate-pulse">
-            <div className="h-8 bg-theme-surface rounded w-1/4 mb-4"></div>
-            <div className="h-4 bg-theme-surface rounded w-1/2 mb-8"></div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[...Array(6)].map((_, i) => (
-                <div key={i} className="bg-theme-surface rounded-lg p-6 space-y-4">
-                  <div className="h-4 bg-theme-background rounded w-3/4"></div>
-                  <div className="h-3 bg-theme-background rounded w-full"></div>
-                  <div className="h-3 bg-theme-background rounded w-2/3"></div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const headerTitle = activeTab === 'public' ? 'Public Collections' : 'My Collections';
 
   return (
     <div className="min-h-screen bg-theme-background">
@@ -279,10 +296,10 @@ export default function CollectionsPage() {
             <div>
               <h1 className="text-3xl font-bold text-theme-foreground flex items-center space-x-2">
                 <GlobeAltIcon className="w-8 h-8 text-theme-primary" />
-                <span>Public Collections</span>
+                <span>{headerTitle}</span>
               </h1>
               <p className="text-theme-muted mt-2">
-                Discover and fork amazing developer tool collections from the community
+                {activeTab === 'public' ? 'Discover and fork amazing developer tool collections from the community' : 'Manage and explore the collections you have created or forked'}
               </p>
             </div>
             {user && (
@@ -303,6 +320,22 @@ export default function CollectionsPage() {
                 </button>
               </div>
             )}
+          </div>
+
+          {/* Tabs */}
+          <div className="flex space-x-2 mt-6">
+            {[
+              { value: 'public', label: 'Public Collections' },
+              { value: 'mine', label: 'My Collections' }
+            ].map(tab => (
+              <button
+                key={tab.value}
+                onClick={() => handleTabChange(tab.value)}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${activeTab === tab.value ? 'bg-theme-primary text-white' : 'bg-theme-surface text-theme-muted hover:bg-theme-background'}`}
+              >
+                {tab.label}
+              </button>
+            ))}
           </div>
 
           {/* Search and Filters */}
@@ -389,7 +422,8 @@ export default function CollectionsPage() {
           )}
         </div>
 
-        {/* Featured Collections */}
+        {/* Featured Collections (only for public) */}
+        {activeTab === 'public' && (
         <div className="mb-8">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold text-theme-foreground">Featured Collections</h2>
@@ -475,21 +509,38 @@ export default function CollectionsPage() {
               <p className="text-theme-muted">No featured collections available</p>
             </div>
           )}
-        </div>
+  </div>
+  )}
 
         {/* All Collections Section */}
         <div className="border-t border-theme-border pt-8">
-          <h2 className="text-2xl font-bold text-theme-foreground mb-6">All Collections</h2>
+          <h2 className="text-2xl font-bold text-theme-foreground mb-6">{activeTab === 'public' ? 'All Public Collections' : 'All My Collections'}</h2>
 
         {/* Results Count */}
         <div className="mb-6">
           <p className="text-theme-muted">
-            Showing {filteredAndSortedCollections.length} of {collections.length} collections
+            {activeTab === 'public' ? (
+              <>Showing {filteredAndSortedCollections.length} of {collections.length} collections</>
+            ) : myLoading ? (
+              'Loading your collections...'
+            ) : (
+              <>Showing {filteredAndSortedCollections.length} of {myCollections.length} collections</>
+            )}
           </p>
         </div>
 
         {/* Collections Grid */}
-        {filteredAndSortedCollections.length === 0 ? (
+        {(activeTab === 'public' && loading) || (activeTab === 'mine' && myLoading) ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-pulse">
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="bg-theme-surface rounded-lg p-6 space-y-4">
+                <div className="h-4 bg-theme-background rounded w-3/4"></div>
+                <div className="h-3 bg-theme-background rounded w-full"></div>
+                <div className="h-3 bg-theme-background rounded w-2/3"></div>
+              </div>
+            ))}
+          </div>
+        ) : filteredAndSortedCollections.length === 0 ? (
           <div className="text-center py-12">
             <SparklesIcon className="w-16 h-16 text-theme-muted mx-auto mb-4" />
             <h3 className="text-xl font-semibold text-theme-foreground mb-2">
@@ -598,14 +649,16 @@ export default function CollectionsPage() {
                       <EyeIcon className="w-4 h-4" />
                       <span>View</span>
                     </button>
-                    <button
-                      onClick={() => handleForkCollection(collection._id)}
-                      disabled={forking === collection._id}
-                      className="flex-1 flex items-center justify-center space-x-2 px-3 py-2 bg-theme-primary text-white rounded-lg hover:bg-theme-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                    >
-                      <DocumentDuplicateIcon className="w-4 h-4" />
-                      <span>{forking === collection._id ? 'Forking...' : 'Fork'}</span>
-                    </button>
+                    {activeTab === 'public' && (
+                      <button
+                        onClick={() => handleForkCollection(collection._id)}
+                        disabled={forking === collection._id}
+                        className="flex-1 flex items-center justify-center space-x-2 px-3 py-2 bg-theme-primary text-white rounded-lg hover:bg-theme-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                      >
+                        <DocumentDuplicateIcon className="w-4 h-4" />
+                        <span>{forking === collection._id ? 'Forking...' : 'Fork'}</span>
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
