@@ -40,15 +40,17 @@ export async function POST(request, { params }) {
       );
     }
 
-    // Check if blog exists and is public
-    const blog = await Blog.findOne({
-      ...buildIdOrSlugQuery(id),
-      isPublic: true,
-      status: 'published'
-    });
-
+    // Find blog by id or slug
+    const blog = await Blog.findOne(buildIdOrSlugQuery(id));
     if (!blog) {
       return NextResponse.json({ error: 'Blog not found' }, { status: 404 });
+    }
+
+    // If blog is not public/published, only the author may rate it
+    if (!(blog.isPublic && blog.status === 'published')) {
+      if (blog.author.toString() !== user._id.toString()) {
+        return NextResponse.json({ error: 'Blog not found' }, { status: 404 });
+      }
     }
 
     // Check if user has already rated this blog
@@ -173,6 +175,13 @@ export async function DELETE(request, { params }) {
     const blog = await Blog.findOne(buildIdOrSlugQuery(id));
     if (!blog) {
       return NextResponse.json({ error: 'Blog not found' }, { status: 404 });
+    }
+
+    // If blog is not public/published, only the author may delete their rating
+    if (!(blog.isPublic && blog.status === 'published')) {
+      if (blog.author.toString() !== user._id.toString()) {
+        return NextResponse.json({ error: 'Blog not found' }, { status: 404 });
+      }
     }
 
     // Find and delete user's rating
