@@ -59,7 +59,7 @@ export default function Dashboard() {
       setLoading(true);
 
       // Fetch user's collections
-      const collectionsResponse = await fetch("/api/collections");
+      const collectionsResponse = await fetch("/api/collections/public");
       if (collectionsResponse.ok) {
         const collectionsData = await collectionsResponse.json();
         const userCollections = collectionsData.collections || [];
