@@ -86,6 +86,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <ClerkProvider
+      publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
       appearance={{
         baseTheme: dark,
         variables: {
@@ -102,6 +103,7 @@ export default function RootLayout({ children }) {
           headerSubtitle: "text-theme-text-secondary",
         },
       }}
+      // Redirect to a public route after auth to prevent middleware loops if session refresh fails
       signInFallbackRedirectUrl="/dashboard"
       signUpFallbackRedirectUrl="/dashboard"
     >

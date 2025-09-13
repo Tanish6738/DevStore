@@ -49,7 +49,6 @@ const predefinedProducts = [
     url: 'https://snippets-frontend-pearl.vercel.app/',
     description: 'CodeArc helps developers organize, reuse, and share code snippets effortlessly. Powered by AI, it streamlines development by providing smart suggestions, automated tests, and real-time collaboration tools.',
     category: 'Development Tools',
-    faviconUrl: 'https://snippets-frontend-pearl.vercel.app/favicon.ico',
     metadata: {
       tags: ['ai', 'snippets', 'code-management', 'collaboration', 'search'],
     },
@@ -59,7 +58,6 @@ const predefinedProducts = [
     url: 'https://securo-app-v0.vercel.app/',
     description: 'Securo lets users scan for data breaches involving their email or passwords, monitor threat exposure, and gain AI-driven security recommendations. Ideal for proactive digital safety.',
     category: 'Security',
-    faviconUrl: 'https://securo-app-v0.vercel.app/favicon.ico',
     metadata: {
       tags: ['security', 'breach-detection', 'ai', 'password-analysis', 'monitoring'],
     },
@@ -69,7 +67,6 @@ const predefinedProducts = [
     url: 'https://pdf-merger-green.vercel.app/',
     description: 'PDF Pro offers a powerful suite to create, merge, protect, and manage PDFs. Designed with security-first tools like encryption, watermarking, and file tracking for secure document workflows.',
     category: 'Document Management',
-    faviconUrl: 'https://pdf-merger-green.vercel.app/favicon.ico',
     metadata: {
       tags: ['pdf', 'document-management', 'encryption', 'security', 'file-processing'],
     },
@@ -79,7 +76,6 @@ const predefinedProducts = [
     url: 'https://kai-api-v0.onrender.com/',
     description: 'Kai-API scans public repositories to detect leaked or vulnerable APIs. It provides continuous monitoring, instant alerts, and detailed security insights to prevent breaches before they happen.',
     category: 'Security',
-    faviconUrl: 'https://kai-api-v0.onrender.com/favicon.ico',
     metadata: {
       tags: ['api-security', 'vulnerability-scanning', 'monitoring', 'repository-security', 'alerts'],
     },
@@ -91,7 +87,6 @@ const predefinedProducts = [
     url: 'https://github.com',
     description: 'The world\'s leading software development platform',
     category: 'Version Control',
-    faviconUrl: 'https://github.com/favicon.ico',
     metadata: {
       tags: ['git', 'version-control', 'collaboration', 'open-source'],
     },
@@ -101,7 +96,6 @@ const predefinedProducts = [
     url: 'https://code.visualstudio.com',
     description: 'Free source-code editor with support for debugging, syntax highlighting, and extensions',
     category: 'Code Editor',
-    faviconUrl: 'https://code.visualstudio.com/favicon.ico',
     metadata: {
       tags: ['editor', 'ide', 'microsoft', 'extensions'],
     },
@@ -111,7 +105,6 @@ const predefinedProducts = [
     url: 'https://postman.com',
     description: 'API platform for building and using APIs',
     category: 'API Tools',
-    faviconUrl: 'https://postman.com/favicon.ico',
     metadata: {
       tags: ['api', 'testing', 'http', 'rest'],
     },
@@ -123,7 +116,6 @@ const predefinedProducts = [
     url: 'https://vercel.com',
     description: 'Platform for frontend frameworks and static sites, built to integrate with headless content, commerce, or database',
     category: 'Hosting',
-    faviconUrl: 'https://vercel.com/favicon.ico',
     metadata: {
       tags: ['hosting', 'deployment', 'serverless', 'frontend'],
     },
@@ -133,7 +125,6 @@ const predefinedProducts = [
     url: 'https://netlify.com',
     description: 'Build, deploy, and manage modern web projects',
     category: 'Hosting',
-    faviconUrl: 'https://netlify.com/favicon.ico',
     metadata: {
       tags: ['hosting', 'deployment', 'jamstack', 'static-sites'],
     },
@@ -143,7 +134,6 @@ const predefinedProducts = [
     url: 'https://heroku.com',
     description: 'Cloud platform that lets companies build, deliver, monitor and scale apps',
     category: 'Cloud Platform',
-    faviconUrl: 'https://heroku.com/favicon.ico',
     metadata: {
       tags: ['cloud', 'platform', 'deployment', 'scaling'],
     },
@@ -155,7 +145,6 @@ const predefinedProducts = [
     url: 'https://mongodb.com/atlas',
     description: 'Multi-cloud database service for modern applications',
     category: 'Database',
-    faviconUrl: 'https://mongodb.com/favicon.ico',
     metadata: {
       tags: ['database', 'nosql', 'cloud', 'mongodb'],
     },
@@ -165,7 +154,6 @@ const predefinedProducts = [
     url: 'https://firebase.google.com',
     description: 'Platform for building web and mobile applications',
     category: 'Backend as a Service',
-    faviconUrl: 'https://firebase.google.com/favicon.ico',
     metadata: {
       tags: ['database', 'authentication', 'hosting', 'google'],
     },
@@ -175,7 +163,6 @@ const predefinedProducts = [
     url: 'https://supabase.com',
     description: 'Open source Firebase alternative with PostgreSQL database',
     category: 'Backend as a Service',
-    faviconUrl: 'https://supabase.com/favicon.ico',
     metadata: {
       tags: ['database', 'postgresql', 'authentication', 'open-source'],
     },
@@ -187,7 +174,6 @@ const predefinedProducts = [
     url: 'https://figma.com',
     description: 'Collaborative interface design tool',
     category: 'Design',
-    faviconUrl: 'https://figma.com/favicon.ico',
     metadata: {
       tags: ['design', 'ui', 'ux', 'collaboration', 'prototyping'],
     },
@@ -197,7 +183,6 @@ const predefinedProducts = [
     url: 'https://tailwindcss.com',
     description: 'Utility-first CSS framework for rapidly building custom user interfaces',
     category: 'CSS Framework',
-    faviconUrl: 'https://tailwindcss.com/favicon.ico',
     metadata: {
       tags: ['css', 'framework', 'utility-first', 'responsive'],
     },
@@ -209,7 +194,6 @@ const predefinedProducts = [
     url: 'https://analytics.google.com',
     description: 'Web analytics service that tracks and reports website traffic',
     category: 'Analytics',
-    faviconUrl: 'https://analytics.google.com/favicon.ico',
     metadata: {
       tags: ['analytics', 'tracking', 'google', 'metrics'],
     },
@@ -219,7 +203,6 @@ const predefinedProducts = [
     url: 'https://sentry.io',
     description: 'Application monitoring and error tracking software',
     category: 'Monitoring',
-    faviconUrl: 'https://sentry.io/favicon.ico',
     metadata: {
       tags: ['monitoring', 'error-tracking', 'debugging', 'performance'],
     },
@@ -231,7 +214,6 @@ const predefinedProducts = [
     url: 'https://auth0.com',
     description: 'Identity platform for application builders',
     category: 'Authentication',
-    faviconUrl: 'https://auth0.com/favicon.ico',
     metadata: {
       tags: ['authentication', 'identity', 'oauth', 'security'],
     },
@@ -241,7 +223,6 @@ const predefinedProducts = [
     url: 'https://clerk.com',
     description: 'Complete user management platform',
     category: 'Authentication',
-    faviconUrl: 'https://clerk.com/favicon.ico',
     metadata: {
       tags: ['authentication', 'user-management', 'oauth', 'react'],
     },
@@ -253,7 +234,6 @@ const predefinedProducts = [
     url: 'https://docker.com',
     description: 'Platform for developing, shipping, and running applications in containers',
     category: 'DevOps',
-    faviconUrl: 'https://docker.com/favicon.ico',
     metadata: {
       tags: ['containers', 'devops', 'deployment', 'virtualization'],
     },
@@ -263,7 +243,6 @@ const predefinedProducts = [
     url: 'https://github.com/features/actions',
     description: 'Automate, customize, and execute software development workflows',
     category: 'CI/CD',
-    faviconUrl: 'https://github.com/favicon.ico',
     metadata: {
       tags: ['ci-cd', 'automation', 'workflows', 'github'],
     },
@@ -275,7 +254,6 @@ const predefinedProducts = [
     url: 'https://slack.com',
     description: 'Business communication platform',
     category: 'Communication',
-    faviconUrl: 'https://slack.com/favicon.ico',
     metadata: {
       tags: ['communication', 'collaboration', 'chat', 'teams'],
     },
@@ -285,7 +263,6 @@ const predefinedProducts = [
     url: 'https://discord.com',
     description: 'Voice, video and text communication service',
     category: 'Communication',
-    faviconUrl: 'https://discord.com/favicon.ico',
     metadata: {
       tags: ['communication', 'voice', 'gaming', 'communities'],
     },
@@ -297,7 +274,6 @@ const predefinedProducts = [
     url: 'https://npmjs.com',
     description: 'Package manager for JavaScript',
     category: 'Package Manager',
-    faviconUrl: 'https://npmjs.com/favicon.ico',
     metadata: {
       tags: ['package-manager', 'javascript', 'node', 'dependencies'],
     },

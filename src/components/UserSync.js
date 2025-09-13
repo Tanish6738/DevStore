@@ -11,8 +11,18 @@ export default function UserSync({ children }) {
     const syncUser = async () => {
       if (isLoaded && user && !synced) {
         try {
+          const payload = {
+            clerkId: user.id,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.primaryEmailAddress?.emailAddress,
+            imageUrl: user.imageUrl,
+          };
+
           const response = await fetch('/api/users/sync', {
             method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
           });
           
           if (response.ok) {
